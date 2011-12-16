@@ -7,7 +7,10 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-bonjou   r;
+		int entier = 12;
+		String string = "tagada";
+		System.out.println(string);
+
 	}
 
 }
