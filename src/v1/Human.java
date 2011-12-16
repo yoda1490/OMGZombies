@@ -24,6 +24,7 @@ public class Human extends Character {
         super(name, healthPoints);
         hasBeenBitten = false;
         turnsSinceLastMeal = 0;
+        this.type = 1;
     }
 
     // Accessors and mutators
@@ -57,5 +58,9 @@ public class Human extends Character {
      */
     public Vampire turnIntoVampire() {
         // ... add your code here (question 7b) ...
+    }
+    
+    public void encounterCharacter(Character c){
+        System.out.println("Go away !");
     }
 }

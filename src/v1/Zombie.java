@@ -17,6 +17,7 @@ public class Zombie extends Character {
      */
     public Zombie(String name, int healthPoints) {
         super(name, healthPoints);
+        this.type = 3;
     }
 
     /**
@@ -34,5 +35,20 @@ public class Zombie extends Character {
      */
     public void endOfTurn() {
         // Do nothing. Zombies are useless anyway...
+    }
+
+    public void encounterCharacter(Character c) {
+        switch (c.type) {
+        case 1:
+            c.reduceHealthPoints(5);
+            System.out.println(c.getName() + ", I'm gonna kill you");
+        case 2:
+            if (Simulator.GenerateRandomBoolean() == true) {
+                c.reduceHealthPoints(5);
+                System.out.println(c.getName() + ", I'm gonna kill you");
+            }
+        default:
+            ;
+        }
     }
 }

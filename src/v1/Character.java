@@ -7,12 +7,12 @@ package v1;
  * 
  */
 
-public class Character {
+public abstract class  Character {
     protected String name;
     // name of the character
     protected int healthPoints; // represents the health
     // (once down to 0, this character will be destroyed)
-
+    protected static int type;
     
     /**
      * Constructor of Character class.
@@ -25,6 +25,7 @@ public class Character {
     public Character(String name, int healthPoints) {
         this.name = name;
         this.healthPoints = healthPoints;
+        type = 0;
     }
 
     // Accessors
@@ -66,19 +67,6 @@ public class Character {
      * @param c
      *            the other character that this character meets
      */
-    public void encounterCharacter(Character c) {
-        // Default action: do nothing
-        if (this instanceof Human){
-            System.out.println("Go away !");
-        }
-        else {
-            if (this instanceof Vampire){
-                c.reduceHealthPoints(10);
-            }
-            else{
-                
-            }
-        }
-        System.out.println(name + " meets " + c.name + " and does not attack!");
-    }
+    public abstract void encounterCharacter(Character c);
+    
 }

@@ -13,6 +13,7 @@ public class Vampire extends Character {
     public Vampire (String name, int healthPoints){
         super(name,healthPoints);
         isThirsty = false;
+        this.type = 2;
     }
     
     
@@ -48,5 +49,10 @@ public class Vampire extends Character {
         say("I have bitten you, " + h.getName() + "!");
         // Vampire is not thirsty anymore
         isThirsty = false;
+    }
+    
+    public void encounterCharacter(Character c){
+        c.reduceHealthPoints(10);
+        System.out.println(c.getName()+", I'm gonna kill you.");
     }
 }
