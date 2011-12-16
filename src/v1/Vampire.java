@@ -12,6 +12,7 @@ public class Vampire extends Character {
     // ... add your constructor code here (question 2) ...
     public Vampire (String name, int healthPoints){
         super(name,healthPoints);
+        isThirsty = false;
     }
     
     

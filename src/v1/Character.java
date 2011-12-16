@@ -13,6 +13,7 @@ public class Character {
     protected int healthPoints; // represents the health
     // (once down to 0, this character will be destroyed)
 
+    
     /**
      * Constructor of Character class.
      * 
@@ -67,6 +68,17 @@ public class Character {
      */
     public void encounterCharacter(Character c) {
         // Default action: do nothing
+        if (this instanceof Human){
+            System.out.println("Go away !");
+        }
+        else {
+            if (this instanceof Vampire){
+                c.reduceHealthPoints(10);
+            }
+            else{
+                
+            }
+        }
         System.out.println(name + " meets " + c.name + " and does not attack!");
     }
 }
