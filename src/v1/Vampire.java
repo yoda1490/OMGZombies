@@ -10,6 +10,11 @@ public class Vampire extends Character {
     private boolean isThirsty;
 
     // ... add your constructor code here (question 2) ...
+    public Vampire (String name, int healthPoints){
+        super(name,healthPoints);
+    }
+    
+    
     // Accessors and mutators
     public boolean getIsThirsty() {
         return isThirsty;
