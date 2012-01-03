@@ -58,6 +58,9 @@ public class Human extends Character {
      */
     public Vampire turnIntoVampire() {
         // ... add your code here (question 7b) ...
+        Vampire vamp = new Vampire(this.getName(),this.getHealthPoints());
+        vamp.setIsThirsty(true);
+        return vamp;
     }
     
     public void encounterCharacter(Character c){

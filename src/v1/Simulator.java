@@ -55,15 +55,66 @@ public class Simulator {
 
         // Dead characters are removed from the character list
         // ... add your code here (question 6) ...
+        
+        // J'ai fait une liste d'entier qui vont stocker les index des character à supprimer
+        // Cela évite les problèmes de suppression d'une liste pendant que l'on parcourt cette liste
+        ArrayList<Integer> toRemove = new ArrayList<Integer>();
+        for (int i = 0; i < characterList.size(); ++i){
+            Character d = characterList.get(i);
+            if (d.getHealthPoints() <= 0) toRemove.add(i);
+        }
+        for (int j = 0; j <toRemove.size(); j++){
+            characterList.remove(toRemove.get(j));
+        }
+        
+        
         // Each vampire (if he is thirsty) bites the first Human in the list
         // who has not been bitten yet
         // ... add your code here (question 7a) ...
+        
+        for (int p = 0; p < characterList.size(); p++){
+            if (characterList.get(p).type == 2){
+                Vampire vamp = (Vampire) characterList.get(p);
+                if (vamp.getIsThirsty()){
+                    for (int t = 0; t < characterList.size(); t++){
+                        if (characterList.get(t).type == 1){
+                            Human bob = (Human) characterList.get(t);
+                           if(bob.getHasBeenBitten() == false){
+                               vamp.bite(bob);
+                               break;
+                           }
+                        }
+                    }
+                }
+            }
+        }
+        
         // Humans that have been bitten become vampires
         // ... add your code here (question 7b) ...
+        
+        for(int l = 0; l < characterList.size();l++){
+            if (characterList.get(l).type == 1){
+                Human ted = (Human) characterList.get(l);
+                if (ted.getHasBeenBitten() == true){
+                    characterList.add(ted.turnIntoVampire());
+                    characterList.remove(ted);
+                }
+            }
+        }
+        
         // Perform end-of-turn actions for all characters (question 4)
         for (int i = 0; i < characterList.size(); ++i) {
-            Character c = characterList.get(i);
+            switch(characterList.get(i).type){
+            case 1 :
+            Human c = (Human) characterList.get(i);
             c.endOfTurn();
+            case 2 :
+            Vampire d = (Vampire) characterList.get(i);
+            d.endOfTurn();
+            case 3 :
+            Zombie z = (Zombie) characterList.get(i);
+            z.endOfTurn();
+            }
         }
     }
 
