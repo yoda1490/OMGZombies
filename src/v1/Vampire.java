@@ -53,6 +53,6 @@ public class Vampire extends Character {
     
     public void encounterCharacter(Character c){
         c.reduceHealthPoints(10);
-        System.out.println(c.getName()+", I'm gonna kill you.");
+        System.out.println(c.getName()+", I'm gonna kill you.You still have "+c.getHealthPoints()+"health");
     }
 }

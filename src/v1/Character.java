@@ -69,4 +69,6 @@ public abstract class  Character {
      */
     public abstract void encounterCharacter(Character c);
     
+    public abstract void endOfTurn();
+    
 }
