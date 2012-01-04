@@ -6,7 +6,7 @@ import java.util.Random;
 /**
  * Simulator for Midterm Zombiegame.
  * 
- * @author pylaffon
+ * @author pylaffon 
  * 
  */
 public class Simulator {
@@ -39,6 +39,7 @@ public class Simulator {
         characterList.add(z1);
         // characterList.add(mz1);
         // uncomment in question 5b
+        
     }
 
     /**
@@ -47,10 +48,19 @@ public class Simulator {
     public void nextTurn() {
         // All characters encounter the next character in the list (question 5)
         for (int i = 0; i < characterList.size(); ++i) {
+            
             Character c = characterList.get(i);
+            System.out.println((i + 1) % (characterList.size()));
             Character encountered = characterList.get((i + 1)
                     % (characterList.size()));
             c.encounterCharacter(encountered);
+            System.out.println(characterList.get(0).getHealthPoints());
+            try {
+                wait(20);
+            } catch (InterruptedException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
         }
 
         // Dead characters are removed from the character list
@@ -96,7 +106,6 @@ public class Simulator {
             if (characterList.get(l).type == 1){
                 Human ted = (Human) characterList.get(l);
                 if (ted.getHasBeenBitten() == true){
-                    characterList.add(ted.turnIntoVampire());
                     characterList.remove(ted);
                 }
             }
@@ -104,19 +113,22 @@ public class Simulator {
         
         // Perform end-of-turn actions for all characters (question 4)
         for (int i = 0; i < characterList.size(); ++i) {
-            switch(characterList.get(i).type){
-            case 1 :
-            Human c = (Human) characterList.get(i);
-            c.endOfTurn();
-            case 2 :
-            Vampire d = (Vampire) characterList.get(i);
-            d.endOfTurn();
-            case 3 :
-            Zombie z = (Zombie) characterList.get(i);
-            z.endOfTurn();
+            /*if(characterList.get(i).type == 1){
+               Human c = (Human) characterList.get(i);
+                c.endOfTurn();
+            }
+            if (characterList.get(i).type == 2){
+                Vampire d = (Vampire) characterList.get(i);
+                d.endOfTurn();
+            }
+            if (characterList.get(i).type == 3){
+                Zombie e = (Zombie) characterList.get(i);
+                e.endOfTurn();
+            }*/
+            characterList.get(i).endOfTurn();
             }
         }
-    }
+    
 
     /**
      * @return the number of human characters currently in the game
