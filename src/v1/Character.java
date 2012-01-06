@@ -57,6 +57,7 @@ public abstract class  Character {
     }
     
 
+
     public Boolean IsAlive(){
         return alive;
     }
@@ -73,6 +74,7 @@ public abstract class  Character {
             field = null;
         }
     }
+
 
 
     /**
