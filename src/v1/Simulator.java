@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
 
-import foxesandrabbits.v1.Rabbit;
+
 
 /**
  * Simulator for Midterm Zombiegame.
