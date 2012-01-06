@@ -25,7 +25,7 @@ public class Zombie extends Character {
      * Output a character's saying to the screen
      * 
      * @param str
-     *            what the character says
+     *            what the character saysfreeAdjacentLocation
      */
     public void say(String str) {
         System.out.println(name + " says: BRAIIIIIINS!");
@@ -50,6 +50,12 @@ public class Zombie extends Character {
             }
         default:
             ;
+        }
+    }
+    
+    public void run(){
+        if(IsAlive()){
+            
         }
     }
 }
