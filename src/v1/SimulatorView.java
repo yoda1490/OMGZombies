@@ -107,8 +107,7 @@ public class SimulatorView extends JFrame {
             for (int col = 0; col < field.getWidth(); col++) {
             	Object character = field.getObjectAt(row, col);
                 if (character != null) {
-                	System.out.println("aa");
-                    stats.incrementCount(character.getClass());
+                	stats.incrementCount(character.getClass());
                     fieldView.drawMark(col, row, getColor(character.getClass()));
                 } else {
                     fieldView.drawMark(col, row, EMPTY_COLOR);

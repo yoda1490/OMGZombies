@@ -56,6 +56,7 @@ public abstract class  Character {
     	return this.location;
     }
     
+
     public Boolean IsAlive(){
         return alive;
     }
@@ -72,6 +73,7 @@ public abstract class  Character {
             field = null;
         }
     }
+
 
     /**
      * Decrease the number of HP by a certain amount. HP cannot go below 0.
