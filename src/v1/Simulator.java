@@ -77,8 +77,11 @@ public class Simulator {
 	 */
 	public void nextTurn() {
 		step++;
+		
+		
+		
 		// All characters encounter the next character in the list (question 5)
-		for (int i = 0; i < characters.size(); ++i) {
+		/*for (int i = 0; i < characters.size(); ++i) {
 
 			Character c = characters.get(i);
 			Character encountered = characters.get((i + 1)
@@ -128,7 +131,7 @@ public class Simulator {
 
 			characters.get(i).endOfTurn();
 		}
-		
+		*/
 		view.showStatus(step, field);
 		
 		

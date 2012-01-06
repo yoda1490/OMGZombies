@@ -1,5 +1,7 @@
 package v1;
 
+import java.util.ArrayList;
+
 public class MadZombie extends Zombie {
 
     public MadZombie(String name, int healthPoints, Field field, Location location) {
@@ -19,6 +21,37 @@ public class MadZombie extends Zombie {
             }
         default:
             ;
+        }
+    }
+    
+    public void run() {
+        int x = 0;
+        if (IsAlive()) {
+            ArrayList<Location> adjacentLocation = (ArrayList<Location>) getField()
+                    .adjacentLocations(getLocation());
+            for (int i = 0; i < adjacentLocation.size(); i++) {
+                if (getField().getObjectAt(adjacentLocation.get(i)).getClass() == Human.class) {
+                    this.encounterCharacter((Human) getField().getObjectAt(
+                            adjacentLocation.get(i)));
+                    x = 1;
+                    break;
+                }
+                if (getField().getObjectAt(adjacentLocation.get(i)).getClass() == Vampire.class) {
+                    this.encounterCharacter((Vampire) getField().getObjectAt(
+                            adjacentLocation.get(i)));
+                    x = 1;
+                    break;
+                }
+
+            }
+            if (x == 0) {
+                Location newLocation = getField().freeAdjacentLocation(
+                        getLocation());
+                if (newLocation != null) {
+                    setLocation(newLocation);
+                }
+            } else
+                setDead();
         }
     }
 

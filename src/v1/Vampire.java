@@ -82,12 +82,13 @@ public class Vampire extends Character {
                     x = 1;
                     break;
                 }
-              if (x == 0){
-                  Location newLocation = getField().freeAdjacentLocation(getLocation());
-                  if (newLocation != null){
-                      setLocation(newLocation);
-                  }
+              
               }
+            if (x == 0){
+                Location newLocation = getField().freeAdjacentLocation(getLocation());
+                if (newLocation != null){
+                    setLocation(newLocation);
+                }
             }
         }
         else setDead();
