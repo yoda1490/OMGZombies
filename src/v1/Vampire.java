@@ -1,6 +1,6 @@
 package v1;
 
-
+import java.util.ArrayList;
 
 /**
  * Vampire class, derives from Character.
@@ -12,13 +12,12 @@ public class Vampire extends Character {
     private boolean isThirsty;
 
     // ... add your constructor code here (question 2) ...
-    public Vampire (String name, int healthPoints, Field field, Location location){
-        super(name,healthPoints, field, location);
+    public Vampire(String name, int healthPoints, Field field, Location location) {
+        super(name, healthPoints, field, location);
         isThirsty = false;
         this.type = 2;
     }
-    
-    
+
     // Accessors and mutators
     public boolean getIsThirsty() {
         return isThirsty;
@@ -52,15 +51,45 @@ public class Vampire extends Character {
         // Vampire is not thirsty anymore
         isThirsty = false;
     }
-    
-    public void encounterCharacter(Character c){
+
+    public void encounterCharacter(Character c) {
         c.reduceHealthPoints(10);
-        System.out.println(c.getName()+", I'm gonna kill you.You still have "+c.getHealthPoints()+"health");
+        System.out.println(c.getName() + ", I'm gonna kill you.You still have "
+                + c.getHealthPoints() + "health");
     }
-    
-    public void run(){
-        if(IsAlive()){
-            Location
+
+    public void run() {
+        int x = 0;
+        if (IsAlive()) {
+            ArrayList<Location> adjacentLocation = (ArrayList<Location>) getField()
+                    .adjacentLocations(getLocation());
+            for (int i = 0; i < adjacentLocation.size(); i++) {
+                if (getField().getObjectAt(adjacentLocation.get(i)).getClass() == Human.class) {
+                    this.encounterCharacter((Human) getField().getObjectAt(
+                            adjacentLocation.get(i)));
+                    x = 1;
+                    break;
+                }
+                if (getField().getObjectAt(adjacentLocation.get(i)).getClass() == Zombie.class) {
+                    this.encounterCharacter((Zombie) getField().getObjectAt(
+                            adjacentLocation.get(i)));
+                    x = 1;
+                    break;
+                }
+                if (getField().getObjectAt(adjacentLocation.get(i)).getClass() == MadZombie.class) {
+                    this.encounterCharacter((MadZombie) getField().getObjectAt(
+                            adjacentLocation.get(i)));
+                    x = 1;
+                    break;
+                }
+              if (x == 0){
+                  Location newLocation = getField().freeAdjacentLocation(getLocation());
+                  if (newLocation != null){
+                      setLocation(newLocation);
+                  }
+              }
+            }
         }
+        else setDead();
     }
 }
