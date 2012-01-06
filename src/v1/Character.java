@@ -55,6 +55,10 @@ public abstract class Character {
 	public Location getLocation() {
 		return this.location;
 	}
+	
+	public int getType() {
+            return this.type;
+        }
 
 	public Boolean IsAlive() {
 		return alive;
@@ -83,6 +87,7 @@ public abstract class Character {
 		healthPoints = healthPoints - reduction;
 		if (healthPoints < 0) {
 			healthPoints = 0;
+			alive = false;
 		}
 	}
 

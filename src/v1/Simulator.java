@@ -28,8 +28,8 @@ public class Simulator {
 	// The probability that a character will be created in any given grid
 	// position.
 	private static final double HUMAN_CREATION_PROBABILITY = 0.1;
-	private static final double VAMPIRE_CREATION_PROBABILITY = 0.05;
-	private static final double ZOMBIE_CREATION_PROBABILITY = 0.06;
+	private static final double VAMPIRE_CREATION_PROBABILITY = 0.001;
+	private static final double ZOMBIE_CREATION_PROBABILITY = 0.1;
 	private static final double MADZOMBIE_CREATION_PROBABILITY = 0.02;
 
 	// private ArrayList<Character> characters;
@@ -87,6 +87,7 @@ public class Simulator {
 	            if (!character.IsAlive()) {
 	                it.remove();
 	            }
+	            
 	        }
 		
 		// All characters encounter the next character in the list (question 5)
@@ -156,25 +157,7 @@ public class Simulator {
 		view.showStatus(step, field);
 	}
 
-	/**
-	 * @return nothing, juste remove all died charactere
-	 */
-	public int removeDead() {
-		int deleted = 0;
-		// Dead characters are removed from the character list
-		@SuppressWarnings("unchecked")
-		ArrayList<Character> tempCharacters = (ArrayList<Character>) characters.clone();
-		for (int i = 0; i < tempCharacters.size(); ++i) {
-			Character d = tempCharacters.get(i);
-			if (d.getHealthPoints() <= 0) {
-				characters.remove(d);
-				deleted++;
-			}
-		}
-		
-		return deleted;
-
-	}
+	
 
 	/**
 	 * @return the number of human characters currently in the game
@@ -203,6 +186,12 @@ public class Simulator {
 		// Iterate until no alive human remains
 		while (sim.nbHumansAlive() > 0) {
 			sim.nextTurn();
+			try {
+                Thread.sleep(600);
+            } catch (InterruptedException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
 		}
 		System.out.println("All humans have been eaten!");
 	}

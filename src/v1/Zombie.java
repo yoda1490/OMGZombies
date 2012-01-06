@@ -58,16 +58,16 @@ public class Zombie extends Character {
     public void run() {
         int x = 0;
         if (IsAlive()) {
-            ArrayList<Location> adjacentLocation = (ArrayList<Location>) getField()
+            ArrayList<Location> adjacentLocation = getField()
                     .adjacentLocations(getLocation());
             for (int i = 0; i < adjacentLocation.size(); i++) {
-                if (getField().getObjectAt(adjacentLocation.get(i)).getClass() == Human.class) {
+                if (this.getField().getObjectAt(adjacentLocation.get(i)) instanceof Human) {
                     this.encounterCharacter((Human) getField().getObjectAt(
                             adjacentLocation.get(i)));
                     x = 1;
                     break;
                 }
-                if (getField().getObjectAt(adjacentLocation.get(i)).getClass() == Vampire.class) {
+                if (this.getField().getObjectAt(adjacentLocation.get(i)) instanceof Vampire) {
                     this.encounterCharacter((Vampire) getField().getObjectAt(
                             adjacentLocation.get(i)));
                     x = 1;
@@ -81,8 +81,9 @@ public class Zombie extends Character {
                 if (newLocation != null) {
                     setLocation(newLocation);
                 }
-            } else
-                setDead();
-        }
+            }
+        } else
+            setDead();
     }
+
 }

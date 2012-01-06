@@ -61,22 +61,22 @@ public class Vampire extends Character {
     public void run() {
         int x = 0;
         if (IsAlive()) {
-            ArrayList<Location> adjacentLocation = (ArrayList<Location>) getField()
+            ArrayList<Location> adjacentLocation =  getField()
                     .adjacentLocations(getLocation());
             for (int i = 0; i < adjacentLocation.size(); i++) {
-                if (getField().getObjectAt(adjacentLocation.get(i)).getClass() == Human.class) {
+                if (this.getField().getObjectAt(adjacentLocation.get(i)) instanceof Human) {
                     this.encounterCharacter((Human) getField().getObjectAt(
                             adjacentLocation.get(i)));
                     x = 1;
                     break;
                 }
-                if (getField().getObjectAt(adjacentLocation.get(i)).getClass() == Zombie.class) {
+                if (this.getField().getObjectAt(adjacentLocation.get(i)) instanceof Zombie) {
                     this.encounterCharacter((Zombie) getField().getObjectAt(
                             adjacentLocation.get(i)));
                     x = 1;
                     break;
                 }
-                if (getField().getObjectAt(adjacentLocation.get(i)).getClass() == MadZombie.class) {
+                if (this.getField().getObjectAt(adjacentLocation.get(i)) instanceof MadZombie) {
                     this.encounterCharacter((MadZombie) getField().getObjectAt(
                             adjacentLocation.get(i)));
                     x = 1;

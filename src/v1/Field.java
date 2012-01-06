@@ -2,6 +2,7 @@ package v1;
 
 import java.util.Collections;
 //import java.util.Iterator;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
@@ -169,10 +170,10 @@ public class Field {
      *            The location from which to generate adjacencies.
      * @return A list of locations adjacent to that given.
      */
-    public List<Location> adjacentLocations(Location location) {
+    public ArrayList<Location> adjacentLocations(Location location) {
         assert location != null : "Null location passed to adjacentLocations";
         // The list of locations to be returned.
-        List<Location> locations = new LinkedList<Location>();
+        ArrayList<Location> locations = new ArrayList<Location>();
         if (location != null) {
             int row = location.getRow();
             int col = location.getCol();
