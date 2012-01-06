@@ -12,7 +12,11 @@ public abstract class  Character {
     // name of the character
     protected int healthPoints; // represents the health
     // (once down to 0, this character will be destroyed)
-    protected static int type;
+    protected int type;
+    
+    private Location location;
+    // The field occupied.
+    private Field field;
     
     /**
      * Constructor of Character class.
@@ -22,9 +26,11 @@ public abstract class  Character {
      * @param healthPoints
      *            initial HP
      */
-    public Character(String name, int healthPoints) {
+    public Character(String name, int healthPoints, Field field, Location location) {
         this.name = name;
         this.healthPoints = healthPoints;
+        this.field = field;
+        this.location = location;
         type = 0;
     }
 
@@ -35,6 +41,14 @@ public abstract class  Character {
 
     public int getHealthPoints() {
         return healthPoints;
+    }
+    
+    public Field getField(){
+    	return this.field;
+    }
+    
+    public Location getLocation(){
+    	return this.location;
     }
 
     /**

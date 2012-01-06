@@ -2,8 +2,8 @@ package v1;
 
 public class MadZombie extends Zombie {
 
-    public MadZombie(String name, int healthPoints) {
-        super(name, healthPoints);
+    public MadZombie(String name, int healthPoints, Field field, Location location) {
+        super(name, healthPoints, field, location);
        this.type = 4;
     }
     
