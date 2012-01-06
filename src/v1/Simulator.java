@@ -2,7 +2,10 @@ package v1;
 
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Random;
+
+import foxesandrabbits.v1.Rabbit;
 
 /**
  * Simulator for Midterm Zombiegame.
@@ -78,7 +81,13 @@ public class Simulator {
 	public void nextTurn() {
 		step++;
 		
-		
+		for (Iterator<Character> it = characters.iterator(); it.hasNext();) {
+	            Character character = it.next();
+	            character.run();
+	            if (!character.IsAlive()) {
+	                it.remove();
+	            }
+	        }
 		
 		// All characters encounter the next character in the list (question 5)
 		/*for (int i = 0; i < characters.size(); ++i) {
