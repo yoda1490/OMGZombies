@@ -92,8 +92,7 @@ public class Simulator {
 
 		// Each vampire (if he is thirsty) bites the first Human in the list
 		// who has not been bitten yet
-		// ... add your code here (question 7a) ...
-
+		
 		for (int p = 0; p < characters.size(); p++) {
 			if (characters.get(p).type == 2) {
 				Vampire vamp = (Vampire) characters.get(p);

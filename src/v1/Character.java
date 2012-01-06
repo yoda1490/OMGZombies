@@ -1,5 +1,6 @@
 package v1;
 
+
 /**
  * Parent Character class
  * 
@@ -31,6 +32,7 @@ public abstract class  Character {
         this.healthPoints = healthPoints;
         this.field = field;
         this.location = location;
+        setLocation(location);
         type = 0;
     }
 
@@ -64,6 +66,16 @@ public abstract class  Character {
         }
     }
 
+    
+    private void setLocation(Location newLocation) {
+        if (location != null) {
+            field.clear(location);
+        }
+        location = newLocation;
+        field.place(this, newLocation);
+    }
+    
+    
     /**
      * Output a character's saying to the screen
      * 
