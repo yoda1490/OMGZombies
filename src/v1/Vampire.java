@@ -57,10 +57,4 @@ public class Vampire extends Character {
         c.reduceHealthPoints(10);
         System.out.println(c.getName()+", I'm gonna kill you.You still have "+c.getHealthPoints()+"health");
     }
-    
-    public void run(){
-        if(IsAlive()){
-            //Location
-        }
-    }
 }
