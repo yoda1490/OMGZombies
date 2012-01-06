@@ -58,6 +58,7 @@ public class Vampire extends Character {
                 + c.getHealthPoints() + "health");
     }
 
+
     public void run() {
         int x = 0;
         if (IsAlive()) {
@@ -82,6 +83,7 @@ public class Vampire extends Character {
                     x = 1;
                     break;
                 }
+
               
               }
             if (x == 0){
@@ -89,7 +91,10 @@ public class Vampire extends Character {
                 if (newLocation != null){
                     setLocation(newLocation);
                 }
-            }
+
+              }
+
+            
         }
         else setDead();
     }
