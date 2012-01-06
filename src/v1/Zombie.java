@@ -52,5 +52,11 @@ public class Zombie extends Character {
             ;
         }
     }
+    
+    public void run(){
+        if(IsAlive()){
+            //Location
+        }
+    }
 }
 

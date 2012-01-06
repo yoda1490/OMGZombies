@@ -60,7 +60,7 @@ public class Vampire extends Character {
     
     public void run(){
         if(IsAlive()){
-            Location
+            //Location
         }
     }
 }
