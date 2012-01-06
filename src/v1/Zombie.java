@@ -16,8 +16,8 @@ public class Zombie extends Character {
      * @param healthPoints
      *            initial HP
      */
-    public Zombie(String name, int healthPoints) {
-        super(name, healthPoints);
+    public Zombie(String name, int healthPoints, Field field, Location location) {
+        super(name, healthPoints, field, location);
         this.type = 3;
     }
 

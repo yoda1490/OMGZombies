@@ -1,5 +1,7 @@
 package v1;
 
+
+
 /**
  * Vampire class, derives from Character.
  * 
@@ -10,8 +12,8 @@ public class Vampire extends Character {
     private boolean isThirsty;
 
     // ... add your constructor code here (question 2) ...
-    public Vampire (String name, int healthPoints){
-        super(name,healthPoints);
+    public Vampire (String name, int healthPoints, Field field, Location location){
+        super(name,healthPoints, field, location);
         isThirsty = false;
         this.type = 2;
     }

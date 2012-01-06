@@ -20,8 +20,8 @@ public class Human extends Character {
      * @param healthPoints
      *            initial HP
      */
-    public Human(String name, int healthPoints) {
-        super(name, healthPoints);
+    public Human(String name, int healthPoints, Field field, Location location) {
+        super(name, healthPoints, field, location);
         hasBeenBitten = false;
         turnsSinceLastMeal = 0;
         this.type = 1;
@@ -58,7 +58,7 @@ public class Human extends Character {
      */
     public Vampire turnIntoVampire() {
         // ... add your code here (question 7b) ...
-        Vampire vamp = new Vampire(this.getName(),this.getHealthPoints());
+        Vampire vamp = new Vampire(this.getName(),this.getHealthPoints(), this.getField(), this.getLocation());
         vamp.setIsThirsty(true);
         return vamp;
     }
