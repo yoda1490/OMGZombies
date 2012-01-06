@@ -52,6 +52,8 @@ public abstract class  Character {
     public Location getLocation(){
     	return this.location;
     }
+    
+    
 
     /**
      * Decrease the number of HP by a certain amount. HP cannot go below 0.
@@ -67,7 +69,7 @@ public abstract class  Character {
     }
 
     
-    private void setLocation(Location newLocation) {
+    public void setLocation(Location newLocation) {
         if (location != null) {
             field.clear(location);
         }

@@ -2,7 +2,6 @@ package v1;
 
 import java.awt.Color;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 /**
@@ -20,9 +19,9 @@ public class Simulator {
 
 	// Constants representing configuration information for the simulation.
 	// The default width for the grid.
-	private static final int DEFAULT_WIDTH = 260;
+	private static final int DEFAULT_WIDTH = 120;
 	// The default depth of the grid.
-	private static final int DEFAULT_DEPTH = 130;
+	private static final int DEFAULT_DEPTH = 60;
 	// The probability that a character will be created in any given grid
 	// position.
 	private static final double HUMAN_CREATION_PROBABILITY = 0.1;
@@ -31,7 +30,7 @@ public class Simulator {
 	private static final double MADZOMBIE_CREATION_PROBABILITY = 0.02;
 
 	// private ArrayList<Character> characters;
-	private List<Character> characters;
+	private ArrayList<Character> characters;
 
 	// The current state of the field.
 	private Field field;
@@ -86,10 +85,12 @@ public class Simulator {
 					% (characters.size()));
 			c.encounterCharacter(encountered);
 			// on supprime tout les morts
-			removeDead();
+		
+			c.setLocation(c.getField().getFreeAdjacentLocations(c.getLocation()).get(0));
 			System.out.println(c.getLocation());
 		}
-
+		removeDead();
+		
 		// Each vampire (if he is thirsty) bites the first Human in the list
 		// who has not been bitten yet
 		
@@ -122,13 +123,15 @@ public class Simulator {
 			}
 		}
 
-		// Perform end-of-turn actions for all characters (question 4)
+		// Perform end-of-turn actions  for all characters (question 4)
 		for (int i = 0; i < characters.size(); ++i) {
 
 			characters.get(i).endOfTurn();
 		}
 		
 		view.showStatus(step, field);
+		
+		
 	}
 
 	// reset field and charactere
@@ -144,14 +147,20 @@ public class Simulator {
 	/**
 	 * @return nothing, juste remove all died charactere
 	 */
-	public void removeDead() {
+	public int removeDead() {
+		int deleted = 0;
 		// Dead characters are removed from the character list
-		for (int i = 0; i < characters.size(); ++i) {
-			Character d = characters.get(i);
+		@SuppressWarnings("unchecked")
+		ArrayList<Character> tempCharacters = (ArrayList<Character>) characters.clone();
+		for (int i = 0; i < tempCharacters.size(); ++i) {
+			Character d = tempCharacters.get(i);
 			if (d.getHealthPoints() <= 0) {
 				characters.remove(d);
+				deleted++;
 			}
 		}
+		
+		return deleted;
 
 	}
 
