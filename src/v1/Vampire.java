@@ -90,6 +90,11 @@ public class Vampire extends Character {
                 if (newLocation != null) {
                     setLocation(newLocation);
                 }
+                newLocation = getField().freeAdjacentLocation(
+                        getLocation());
+                if (newLocation != null) {
+                    setLocation(newLocation);
+                }
 
             }
 

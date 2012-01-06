@@ -131,9 +131,9 @@ public class Field {
      *            Get locations adjacent to this.
      * @return A list of free adjacent locations.
      */
-    public List<Location> getFreeAdjacentLocations(Location location) {
-        List<Location> free = new LinkedList<Location>();
-        List<Location> adjacent = adjacentLocations(location);
+    public ArrayList<Location> getFreeAdjacentLocations(Location location) {
+    	ArrayList<Location> free = new ArrayList<Location>();
+    	ArrayList<Location> adjacent = adjacentLocations(location);
         for (Location next : adjacent) {
             if (getObjectAt(next) == null) {
                 free.add(next);
