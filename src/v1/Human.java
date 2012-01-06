@@ -66,4 +66,14 @@ public class Human extends Character {
     public void encounterCharacter(Character c){
         System.out.println("Go away !");
     }
+    
+    public void run(){
+        if(IsAlive()){
+            Location newLocation = getField().freeAdjacentLocation(getLocation());
+            if (newLocation != null){
+                setLocation(newLocation);
+            }
+        }
+        else setDead();
+    }
 }

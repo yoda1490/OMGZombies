@@ -19,6 +19,8 @@ public abstract class  Character {
     // The field occupied.
     private Field field;
     
+    private boolean alive;
+    
     /**
      * Constructor of Character class.
      * 
@@ -33,6 +35,7 @@ public abstract class  Character {
         this.field = field;
         this.location = location;
         setLocation(location);
+        alive = true;
         type = 0;
     }
 
@@ -52,6 +55,23 @@ public abstract class  Character {
     public Location getLocation(){
     	return this.location;
     }
+    
+    public Boolean IsAlive(){
+        return alive;
+    }
+    
+    public void setAlive(Boolean bool){
+        this.alive = bool;
+    }
+    
+    public void setDead(){
+        alive = false;
+        if(location != null){
+            field.clear(location);
+            location = null;
+            field = null;
+        }
+    }
 
     /**
      * Decrease the number of HP by a certain amount. HP cannot go below 0.
@@ -67,7 +87,7 @@ public abstract class  Character {
     }
 
     
-    private void setLocation(Location newLocation) {
+    public void setLocation(Location newLocation) {
         if (location != null) {
             field.clear(location);
         }
@@ -96,5 +116,7 @@ public abstract class  Character {
     public abstract void encounterCharacter(Character c);
     
     public abstract void endOfTurn();
+    
+    public abstract void run();
     
 }
