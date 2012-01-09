@@ -2,6 +2,8 @@ package v1;
 
 import java.util.ArrayList;
 
+import javax.xml.stream.events.Characters;
+
 /**
  * Human class, derives from Character
  * 
@@ -12,7 +14,6 @@ public class Human extends Character {
 	private boolean hasBeenBitten; // false, until a vampire bites this human
 	private int turnsSinceLastMeal; // the human will lose health if he's too
 									// hungry
-
 	/**
 	 * Constructor of Human class. At the beginning of the game, humans just had
 	 * dinner, and have not been bitten yet.
@@ -59,12 +60,26 @@ public class Human extends Character {
 	 *         as this human; the new vampire is immediately thirsty
 	 */
 	public Vampire turnIntoVampire() {
-		// ... add your code here (question 7b) ...
-		Vampire vamp = new Vampire(this.getName(), this.getHealthPoints(),
+		// ... add your code here (question 7b) .
+	    
+		Vampire vamp = new Vampire(this.getName(), this.getHealthPoints()+1,
 				this.getField(), this.getLocation());
 		vamp.setIsThirsty(true);
+		Simulator.characters.add(vamp);
+		Simulator.characters.remove(this);
 		return vamp;
 	}
+	
+	public Zombie turnIntoZombie(){
+	    // On ajoute 1 aux points de vie de l'humain car il sera transormé en Zombie seulement si celui-ci le tue
+	    // Donc à la création le néo-zombie aura 0 HP et sera remove de la liste on lui en donne donc un
+	    Zombie zom = new Zombie (this.getName(), this.getHealthPoints()+1,
+                    this.getField(), this.getLocation());
+	    Simulator.characters.add(zom);
+            Simulator.characters.remove(this);
+	    return zom;
+	}
+	
 
 	public void encounterCharacter(Character c) {
 		System.out.println("Go away !");
@@ -80,7 +95,7 @@ public class Human extends Character {
 						if(this.getField().getObjectAt(locations.get(oposateLocation)) == null){
 							System.out.println("Human fear !!!");
 							setLocation(locations.get(oposateLocation));
-							move = 1;
+							move = 1;							
 							break;
 						}
 					}

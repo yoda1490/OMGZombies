@@ -39,6 +39,7 @@ public class Zombie extends Character {
     public void endOfTurn() {
         // Do nothing. Zombies are useless anyway...
     }
+    
 
     public void encounterCharacter(Character c) {
         switch (c.type) {
@@ -64,16 +65,12 @@ public class Zombie extends Character {
                 if (this.getField().getObjectAt(adjacentLocation.get(i)) instanceof Human) {
                     this.encounterCharacter((Human) getField().getObjectAt(
                             adjacentLocation.get(i)));
+                    Human h = (Human) getField().getObjectAt(
+                            adjacentLocation.get(i));
+                    if (h.getHealthPoints() == 0) h.turnIntoZombie();
                     x = 1;
                     break;
                 }
-                if (this.getField().getObjectAt(adjacentLocation.get(i)) instanceof Vampire) {
-                    this.encounterCharacter((Vampire) getField().getObjectAt(
-                            adjacentLocation.get(i)));
-                    x = 1;
-                    break;
-                }
-
             }
             if (x == 0) {
                 Location newLocation = getField().freeAdjacentLocation(
@@ -82,8 +79,9 @@ public class Zombie extends Character {
                     setLocation(newLocation);
                 }
             }
-        } else
+        } else 
             setDead();
+        
     }
 
 }

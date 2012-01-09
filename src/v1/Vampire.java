@@ -67,22 +67,12 @@ public class Vampire extends Character {
                 if (this.getField().getObjectAt(adjacentLocation.get(i)) instanceof Human) {
                     this.encounterCharacter((Human) getField().getObjectAt(
                             adjacentLocation.get(i)));
+                    Human h = (Human) getField().getObjectAt(
+                            adjacentLocation.get(i));
+                    if (h.getHealthPoints() == 0) h.turnIntoVampire();
                     x = 1;
                     break;
                 }
-                if (this.getField().getObjectAt(adjacentLocation.get(i)) instanceof Zombie) {
-                    this.encounterCharacter((Zombie) getField().getObjectAt(
-                            adjacentLocation.get(i)));
-                    x = 1;
-                    break;
-                }
-                if (this.getField().getObjectAt(adjacentLocation.get(i)) instanceof MadZombie) {
-                    this.encounterCharacter((MadZombie) getField().getObjectAt(
-                            adjacentLocation.get(i)));
-                    x = 1;
-                    break;
-                }
-
             }
             if (x == 0) {
                 Location newLocation = getField().freeAdjacentLocation(
@@ -95,10 +85,10 @@ public class Vampire extends Character {
                 if (newLocation != null) {
                     setLocation(newLocation);
                 }
-
             }
 
-        } else
+        } else{
             setDead();
+        }
     }
 }
