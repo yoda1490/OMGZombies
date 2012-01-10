@@ -29,6 +29,10 @@ public class Simulator {
     private static final double VAMPIRE_CREATION_PROBABILITY = 0.01;
     private static final double ZOMBIE_CREATION_PROBABILITY = 0.01;
     private static final double MADZOMBIE_CREATION_PROBABILITY = 0.02;
+    private static final double FOOD_CREATION_PROBABILITY = 0.02;
+    private static final double SHOTGUN_CREATION_PROBABILITY = 0.02;
+    private static final double NITROGEN_CREATION_PROBABILITY = 0.01;
+    private static final double WOODENSTAKE_CREATION_PROBABILITY = 0.01;
 
     // private ArrayList<Character> characters;
     public static ArrayList<Character> characters;
@@ -64,6 +68,11 @@ public class Simulator {
         view.setColor(Vampire.class, Color.yellow);
         view.setColor(Zombie.class, Color.orange);
         view.setColor(MadZombie.class, Color.red);
+        view.setColor(Food.class, Color.blue);
+        view.setColor(ShotGun.class, Color.black);
+        view.setColor(Nitrogen.class, Color.gray);
+        view.setColor(WoodenStake.class, Color.pink);
+        
 
         characters = new ArrayList<Character>();
         // Setup a valid starting point.
@@ -79,9 +88,10 @@ public class Simulator {
     public void nextTurn() {
         step++;
 
-        for (int i = 0; i<characters.size();i++) {
+        for (int i = 0; i < characters.size(); i++) {
             Character character = characters.get(i);
             character.run();
+            character.endOfTurn();
             if (!character.IsAlive()) {
                 characters.remove(i);
             }
@@ -94,6 +104,7 @@ public class Simulator {
          * Character c = characters.get(i); Character encountered =
          * characters.get((i + 1) % (characters.size()));
          * c.encounterCharacter(encountered); // on supprime tout les morts
+         * 
          * 
          * 
          * c.setLocation(c.getField().getFreeAdjacentLocations(c.getLocation()).get
@@ -122,6 +133,10 @@ public class Simulator {
          * 
          * characters.get(i).endOfTurn(); }
          */
+        if (step % 15 == 0){
+            distribution();
+        }
+        
         view.showStatus(step, field);
 
     }
@@ -215,6 +230,34 @@ public class Simulator {
                 // else leave the location empty.
             }
         }
+    }
+
+    private void distribution() {
+        Random rand = Randomizer.getRandom();
+        for (int row = 0; row < field.getDepth(); row++) {
+            for (int col = 0; col < field.getWidth(); col++) { 
+                
+                //if (field.getObjectAt(location) == null){
+                    if (rand.nextDouble() <= FOOD_CREATION_PROBABILITY){
+                        System.out.println("aaaaa");
+                        Location location = new Location(row,col);
+                        Food food = new Food(location,field);
+                    }
+                    else if (rand.nextDouble() <= SHOTGUN_CREATION_PROBABILITY){
+                        Location location = new Location(row,col);
+                        ShotGun shotgun = new ShotGun(location,field);
+                    }
+                    else if (rand.nextDouble() <= NITROGEN_CREATION_PROBABILITY){
+                        Location location = new Location(row,col);
+                        Nitrogen nitrogen = new Nitrogen(location,field);
+                    }
+                    else if(rand.nextDouble() <= WOODENSTAKE_CREATION_PROBABILITY){
+                        Location location = new Location(row,col);
+                        WoodenStake woodenstake = new WoodenStake(location,field);
+                    }
+                }
+            }
+       // }
     }
 
 }

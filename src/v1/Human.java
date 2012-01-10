@@ -14,6 +14,13 @@ public class Human extends Character {
 	private boolean hasBeenBitten; // false, until a vampire bites this human
 	private int turnsSinceLastMeal; // the human will lose health if he's too
 									// hungry
+	private boolean HasShotGun;
+	private boolean HasNitrogen;
+	private boolean HasWoodenStake;
+	
+	private ShotGun shotgun;
+	private Nitrogen nitrogen;
+	private WoodenStake woodenstake;
 	/**
 	 * Constructor of Human class. At the beginning of the game, humans just had
 	 * dinner, and have not been bitten yet.
@@ -28,6 +35,12 @@ public class Human extends Character {
 		hasBeenBitten = false;
 		turnsSinceLastMeal = 0;
 		this.type = 1;
+		this.hasBeenBitten = false;
+		this.HasNitrogen = false;
+		this.HasShotGun = false;
+		this.shotgun = null;
+		this.nitrogen = null;
+		this.woodenstake = null;
 	}
 
 	// Accessors and mutators
@@ -38,8 +51,18 @@ public class Human extends Character {
 	public void setHasBeenBitten(boolean hasBeenBitten) {
 		this.hasBeenBitten = hasBeenBitten;
 	}
+	
+	
 
-	/**
+	public int getTurnsSinceLastMeal() {
+        return turnsSinceLastMeal;
+    }
+
+    public void setTurnsSinceLastMeal(int turnsSinceLastMeal) {
+        this.turnsSinceLastMeal = turnsSinceLastMeal;
+    }
+
+    /**
 	 * Method triggered on each character at the end of each turn.
 	 */
 	public void endOfTurn() {
@@ -90,6 +113,12 @@ public class Human extends Character {
 			ArrayList<Location> locations = getField().adjacentLocations(getLocation());
 				int move = 0;
 				for (int i = 0; i < locations.size(); i++) {
+				    if (getField().getObjectAt(locations.get(i)) instanceof Food){
+				        Food f = (Food) getField().getObjectAt(locations.get(i));
+				        setLocation((locations.get(i)));
+				        setTurnsSinceLastMeal(0);
+				        //f.use();
+				    }
 					if(getField().getObjectAt(locations.get(i)) instanceof Zombie){
 						int oposateLocation = (i+2) % 4;
 						if(this.getField().getObjectAt(locations.get(oposateLocation)) == null){
