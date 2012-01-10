@@ -10,12 +10,15 @@ import java.util.ArrayList;
  */
 public class Vampire extends Character {
     private boolean isThirsty;
+    private int age;
+    private static final int MAX_AGE = 100;
 
     // ... add your constructor code here (question 2) ...
     public Vampire(String name, int healthPoints, Field field, Location location) {
         super(name, healthPoints, field, location);
         isThirsty = false;
         this.type = 2;
+        age = 0;
     }
 
     // Accessors and mutators
@@ -60,7 +63,8 @@ public class Vampire extends Character {
 
     public void run() {
         int x = 0;
-        if (IsAlive()) {
+        age++;
+        if (IsAlive() && age < MAX_AGE) {
             ArrayList<Location> adjacentLocation =  getField()
                     .adjacentLocations(getLocation());
             for (int i = 0; i < adjacentLocation.size(); i++) {

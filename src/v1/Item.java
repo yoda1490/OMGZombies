@@ -28,5 +28,4 @@ public abstract class  Item {
         this.field = field;
     }
     
-    public abstract void use();
 }

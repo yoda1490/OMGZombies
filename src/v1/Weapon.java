@@ -21,4 +21,6 @@ public abstract class Weapon extends Item {
         this.setLocation(null);
         this.setField(null);
     }
+    
+    public abstract void use();
 }

@@ -6,9 +6,4 @@ public class Food extends Item {
         super(location,field);
     }
     
-    public void use(){
-        this.getField().clear(this.getLocation());
-        this.setLocation(null);
-        this.setField(null);
-    }
 }
