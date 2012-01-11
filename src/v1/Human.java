@@ -76,7 +76,7 @@ public class Human extends Character {
 				int move = 0;
 				for (int i = 0; i < locations.size(); i++) {
 					if(getField().getObjectAt(locations.get(i)) instanceof Zombie){
-						int oposateLocation = (i+2) % 4;
+						int oposateLocation = ((i+3) % locations.size());
 						if(this.getField().getObjectAt(locations.get(oposateLocation)) == null){
 							System.out.println("Human fear !!!");
 							setLocation(locations.get(oposateLocation));
