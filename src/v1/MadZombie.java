@@ -25,6 +25,7 @@ public class MadZombie extends Zombie {
         }
     }
 
+    @Override
     public void run() {
         int x = 0;
         if (IsAlive()) {
@@ -36,16 +37,12 @@ public class MadZombie extends Zombie {
                 if (this.getField().getObjectAt(adjacentLocation.get(i)) instanceof Human) {
                     this.encounterCharacter((Human) getField().getObjectAt(
                             adjacentLocation.get(i)));
+                    Human h = (Human) getField().getObjectAt(
+                            adjacentLocation.get(i));
+                    if (h.getHealthPoints() == 0) h.turnIntoZombie();
                     x = 1;
                     break;
                 }
-                if (this.getField().getObjectAt(adjacentLocation.get(i)) instanceof Vampire) {
-                    this.encounterCharacter((Vampire) getField().getObjectAt(
-                            adjacentLocation.get(i)));
-                    x = 1;
-                    break;
-                }
-
             }
             if (x == 0) {
                 Location newLocation = getField().freeAdjacentLocation(

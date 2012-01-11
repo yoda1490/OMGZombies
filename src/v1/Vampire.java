@@ -10,12 +10,15 @@ import java.util.ArrayList;
  */
 public class Vampire extends Character {
     private boolean isThirsty;
+    private int age;
+    private static final int MAX_AGE = 100;
 
     // ... add your constructor code here (question 2) ...
     public Vampire(String name, int healthPoints, Field field, Location location) {
         super(name, healthPoints, field, location);
         isThirsty = false;
         this.type = 2;
+        age = 0;
     }
 
     // Accessors and mutators
@@ -60,29 +63,20 @@ public class Vampire extends Character {
 
     public void run() {
         int x = 0;
-        if (IsAlive()) {
+        age++;
+        if (IsAlive() && age < MAX_AGE) {
             ArrayList<Location> adjacentLocation =  getField()
                     .adjacentLocations(getLocation());
             for (int i = 0; i < adjacentLocation.size(); i++) {
                 if (this.getField().getObjectAt(adjacentLocation.get(i)) instanceof Human) {
                     this.encounterCharacter((Human) getField().getObjectAt(
                             adjacentLocation.get(i)));
+                    Human h = (Human) getField().getObjectAt(
+                            adjacentLocation.get(i));
+                    if (h.getHealthPoints() == 0) h.turnIntoVampire();
                     x = 1;
                     break;
                 }
-                if (this.getField().getObjectAt(adjacentLocation.get(i)) instanceof Zombie) {
-                    this.encounterCharacter((Zombie) getField().getObjectAt(
-                            adjacentLocation.get(i)));
-                    x = 1;
-                    break;
-                }
-                if (this.getField().getObjectAt(adjacentLocation.get(i)) instanceof MadZombie) {
-                    this.encounterCharacter((MadZombie) getField().getObjectAt(
-                            adjacentLocation.get(i)));
-                    x = 1;
-                    break;
-                }
-
             }
             if (x == 0) {
                 Location newLocation = getField().freeAdjacentLocation(
@@ -95,10 +89,10 @@ public class Vampire extends Character {
                 if (newLocation != null) {
                     setLocation(newLocation);
                 }
-
             }
 
-        } else
+        } else{
             setDead();
+        }
     }
 }

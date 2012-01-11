@@ -10,6 +10,11 @@ import java.util.ArrayList;
  */
 public class Zombie extends Character {
 
+    private boolean isStun;
+    private int stunTurn;
+    private int age;
+    private static final int MAX_AGE = 100;
+
     /**
      * Constructor of Zombie class.
      * 
@@ -21,6 +26,25 @@ public class Zombie extends Character {
     public Zombie(String name, int healthPoints, Field field, Location location) {
         super(name, healthPoints, field, location);
         this.type = 3;
+        isStun = false;
+        stunTurn = 0;
+        age = 0;
+    }
+
+    public boolean isStun() {
+        return isStun;
+    }
+
+    public void setStun(boolean isStun) {
+        this.isStun = isStun;
+    }
+
+    public int getStunTurn() {
+        return stunTurn;
+    }
+
+    public void setStunTurn(int stunTurn) {
+        this.stunTurn = stunTurn;
     }
 
     /**
@@ -31,6 +55,13 @@ public class Zombie extends Character {
      */
     public void say(String str) {
         System.out.println(name + " says: BRAIIIIIINS!");
+    }
+    
+    public void decrementeStun(){
+        if (stunTurn == 0){
+            setStun(false);
+        }
+        else stunTurn--;
     }
 
     /**
@@ -57,33 +88,35 @@ public class Zombie extends Character {
 
     public void run() {
         int x = 0;
-        if (IsAlive()) {
-            ArrayList<Location> adjacentLocation = getField()
-                    .adjacentLocations(getLocation());
-            for (int i = 0; i < adjacentLocation.size(); i++) {
-                if (this.getField().getObjectAt(adjacentLocation.get(i)) instanceof Human) {
-                    this.encounterCharacter((Human) getField().getObjectAt(
-                            adjacentLocation.get(i)));
-                    x = 1;
-                    break;
+        age++;
+        if (IsAlive() && age < MAX_AGE) {
+            if (isStun == false) {
+                ArrayList<Location> adjacentLocation = getField()
+                        .adjacentLocations(getLocation());
+                for (int i = 0; i < adjacentLocation.size(); i++) {
+                    if (this.getField().getObjectAt(adjacentLocation.get(i)) instanceof Human) {
+                        this.encounterCharacter((Human) getField().getObjectAt(
+                                adjacentLocation.get(i)));
+                        Human h = (Human) getField().getObjectAt(
+                                adjacentLocation.get(i));
+                        if (h.getHealthPoints() == 0)
+                            h.turnIntoZombie();
+                        x = 1;
+                        break;
+                    }
                 }
-                if (this.getField().getObjectAt(adjacentLocation.get(i)) instanceof Vampire) {
-                    this.encounterCharacter((Vampire) getField().getObjectAt(
-                            adjacentLocation.get(i)));
-                    x = 1;
-                    break;
+                if (x == 0) {
+                    Location newLocation = getField().freeAdjacentLocation(
+                            getLocation());
+                    if (newLocation != null) {
+                        setLocation(newLocation);
+                    }
                 }
-
             }
-            if (x == 0) {
-                Location newLocation = getField().freeAdjacentLocation(
-                        getLocation());
-                if (newLocation != null) {
-                    setLocation(newLocation);
-                }
-            }
+            else decrementeStun();
         } else
             setDead();
+
     }
 
 }
