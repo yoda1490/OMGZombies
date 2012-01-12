@@ -26,10 +26,10 @@ public class Simulator {
     // The probability that a character will be created in any given grid
     // position.
     private static final double HUMAN_CREATION_PROBABILITY = 0.05;
-    private static final double VAMPIRE_CREATION_PROBABILITY = 0.001;
-    private static final double ZOMBIE_CREATION_PROBABILITY = 0.001;
-    private static final double MADZOMBIE_CREATION_PROBABILITY = 0.00;
-    private static final double FOOD_CREATION_PROBABILITY = 0.02;
+    private static final double VAMPIRE_CREATION_PROBABILITY = 0.002;
+    private static final double ZOMBIE_CREATION_PROBABILITY = 0.002;
+    private static final double MADZOMBIE_CREATION_PROBABILITY = 0.0001;
+    private static final double FOOD_CREATION_PROBABILITY = 0.04;
     private static final double SHOTGUN_CREATION_PROBABILITY = 0.02;
     private static final double NITROGEN_CREATION_PROBABILITY = 0.01;
     private static final double WOODENSTAKE_CREATION_PROBABILITY = 0.01;
@@ -65,14 +65,14 @@ public class Simulator {
         field = new Field(depth, width);
 
         view = new SimulatorView(depth, width);
-        view.setColor(Human.class, Color.green);
-        view.setColor(Vampire.class, Color.yellow);
-        view.setColor(Zombie.class, Color.orange);
-        view.setColor(MadZombie.class, Color.red);
-        view.setColor(Food.class, Color.blue);
+        view.setColor(Human.class, Color.blue);
+        view.setColor(Vampire.class, Color.red);
+        view.setColor(Zombie.class, Color.green);
+        view.setColor(MadZombie.class, new Color(0, 103, 0)); //vert foncé
+        view.setColor(Food.class, Color.yellow);
         view.setColor(ShotGun.class, Color.black);
-        view.setColor(Nitrogen.class, Color.gray);
-        view.setColor(WoodenStake.class, Color.pink);
+        view.setColor(Nitrogen.class, new Color(102, 255, 255));
+        view.setColor(WoodenStake.class, new Color(102, 51, 0));
 
         characters = new ArrayList<Character>();
         // Setup a valid starting point.
