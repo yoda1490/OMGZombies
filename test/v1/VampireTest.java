@@ -80,7 +80,7 @@ public class VampireTest {
     @Test
     public void testBite() {
         System.out.println("bite");
-        Human h = null;
+        Human h = new Human("human", 50, vampire.getField(), vampire.getLocation());
         vampire.bite(h);
         
     }
@@ -91,8 +91,8 @@ public class VampireTest {
     @Test
     public void testEncounterCharacter() {
         System.out.println("encounterCharacter");
-        Character c = null;
-        vampire.encounterCharacter(c);
+        Human h = new Human("human", 50, vampire.getField(), vampire.getLocation());
+        vampire.encounterCharacter(h);
         
     }
 

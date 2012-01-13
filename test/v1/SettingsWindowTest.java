@@ -17,6 +17,8 @@ import static org.junit.Assert.*;
  */
 public class SettingsWindowTest {
     
+    SettingsWindow sw;
+    
     public SettingsWindowTest() {
     }
 
@@ -30,6 +32,8 @@ public class SettingsWindowTest {
     
     @Before
     public void setUp() {
+        Simulator sim = new Simulator();
+        sw = new SettingsWindow(sim);
     }
     
     @After
@@ -42,9 +46,7 @@ public class SettingsWindowTest {
     @Test
     public void testOpenWindow() {
         System.out.println("openWindow");
-        SettingsWindow instance = null;
-        instance.openWindow();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        sw.openWindow();
+        
     }
 }

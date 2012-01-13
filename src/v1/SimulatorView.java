@@ -1,7 +1,6 @@
 package v1;
 
 import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -16,7 +15,12 @@ import java.util.Map;
  * @version 2008.03.30
  */
 public class SimulatorView extends JFrame {
-    // Colors used for empty locations.
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -257827505735666353L;
+
+	// Colors used for empty locations.
     private static final Color EMPTY_COLOR = Color.white;
 
     // Color used for objects that have no defined color.
@@ -28,7 +32,8 @@ public class SimulatorView extends JFrame {
     private FieldView fieldView;
 
     // A map for storing colors for participants in the simulation
-    private Map<Class, Color> colors;
+    @SuppressWarnings("rawtypes")
+	private Map<Class, Color> colors;
     // A statistics object computing and storing simulation information
     private FieldStats stats;
 
@@ -40,7 +45,8 @@ public class SimulatorView extends JFrame {
      * @param width
      *            The simulation's width.
      */
-    public SimulatorView(int height, int width) {
+    @SuppressWarnings("rawtypes")
+	public SimulatorView(int height, int width) {
         stats = new FieldStats();
         colors = new LinkedHashMap<Class, Color>();
 
@@ -68,14 +74,16 @@ public class SimulatorView extends JFrame {
      * @param color
      *            The color to be used for the given class.
      */
-    public void setColor(Class characterClass, Color color) {
+    @SuppressWarnings("rawtypes")
+	public void setColor(Class characterClass, Color color) {
         colors.put(characterClass, color);
     }
 
     /**
      * @return The color to be used for a given class of animal.
      */
-    private Color getColor(Class characterClass) {
+    @SuppressWarnings("rawtypes")
+	private Color getColor(Class characterClass) {
         Color col = colors.get(characterClass);
         if (col == null) {
             // no color defined for this class
@@ -137,7 +145,12 @@ public class SimulatorView extends JFrame {
      * advanced GUI stuff - you can ignore this for your project if you like.
      */
     private class FieldView extends JPanel {
-        private final int GRID_VIEW_SCALING_FACTOR = 6;
+        /**
+		 * 
+		 */
+		private static final long serialVersionUID = -1919351851497905595L;
+
+		private final int GRID_VIEW_SCALING_FACTOR = 6;
 
         private int gridWidth, gridHeight;
         private int xScale, yScale;

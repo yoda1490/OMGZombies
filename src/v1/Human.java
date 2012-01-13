@@ -172,12 +172,12 @@ public class Human extends Character {
         System.out.println("Go away !");
     }
 
-    public void run() {
+    @SuppressWarnings("unused")
+	public void run() {
         incrementAge();
         if (IsAlive() && age < MAX_AGE) {
             ArrayList<Location> locations = getField().adjacentLocations(
                     getLocation());
-            int move = 0;
             for (int i = 0; i < locations.size(); i++) {
                 if (getField().getObjectAt(locations.get(i)) instanceof Food) {
                     Food f = (Food) getField().getObjectAt(locations.get(i));

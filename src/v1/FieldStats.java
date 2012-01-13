@@ -1,6 +1,5 @@
 package v1;
 
-import java.awt.Color;
 import java.util.HashMap;
 
 /**
@@ -13,14 +12,16 @@ import java.util.HashMap;
  */
 public class FieldStats {
     // Counters for each type of entity (fox, rabbit, etc.) in the simulation.
-    private HashMap<Class, Counter> counters;
+    @SuppressWarnings("rawtypes")
+	private HashMap<Class, Counter> counters;
     // Whether the counters are currently up to date.
     private boolean countsValid;
 
     /**
      * Construct a FieldStats object.
      */
-    public FieldStats() {
+    @SuppressWarnings("rawtypes")
+	public FieldStats() {
         // Set up a collection for counters for each type of animal that
         // we might find
         counters = new HashMap<Class, Counter>();
@@ -32,11 +33,13 @@ public class FieldStats {
      * 
      * @return A string describing what is in the field.
      */
-    public String getPopulationDetails(Field field) {
+    @SuppressWarnings("rawtypes")
+	public String getPopulationDetails(Field field) {
         StringBuffer buffer = new StringBuffer();
         if (!countsValid) {
             generateCounts(field);
         }
+        
         for (Class key : counters.keySet()) {
             Counter info = counters.get(key);
             buffer.append(info.getName());
@@ -50,7 +53,8 @@ public class FieldStats {
     /**
      * Invalidate the current set of statistics; reset all counts to zero.
      */
-    public void reset() {
+    @SuppressWarnings("rawtypes")
+	public void reset() {
         countsValid = false;
         for (Class key : counters.keySet()) {
             Counter count = counters.get(key);
@@ -64,7 +68,8 @@ public class FieldStats {
      * @param animalClass
      *            The class of animal to increment.
      */
-    public void incrementCount(Class animalClass) {
+    @SuppressWarnings("rawtypes")
+	public void incrementCount(Class animalClass) {
         Counter count = counters.get(animalClass);
         if (count == null) {
             // We do not have a counter for this species yet.
@@ -88,7 +93,8 @@ public class FieldStats {
      * 
      * @return true If there is more than one species alive.
      */
-    public boolean isViable(Field field) {
+    @SuppressWarnings("rawtypes")
+	public boolean isViable(Field field) {
         // How many counts are non-zero.
         int nonZero = 0;
         if (!countsValid) {

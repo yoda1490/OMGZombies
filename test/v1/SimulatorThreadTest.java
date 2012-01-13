@@ -17,6 +17,8 @@ import static org.junit.Assert.*;
  */
 public class SimulatorThreadTest {
     
+    SimulatorThread st;
+    
     public SimulatorThreadTest() {
     }
 
@@ -30,6 +32,8 @@ public class SimulatorThreadTest {
     
     @Before
     public void setUp() {
+        Simulator sim = new Simulator();
+        st = new SimulatorThread("simulator", sim);
     }
     
     @After
@@ -42,9 +46,7 @@ public class SimulatorThreadTest {
     @Test
     public void testRun() {
         System.out.println("run");
-        SimulatorThread instance = null;
-        instance.run();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //st.run(); run the game
+        
     }
 }

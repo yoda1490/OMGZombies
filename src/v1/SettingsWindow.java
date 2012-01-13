@@ -10,7 +10,7 @@
  */
 package v1;
 
-import java.text.NumberFormat;
+
 
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -21,6 +21,10 @@ import javax.swing.event.ChangeListener;
  */
 public class SettingsWindow extends javax.swing.JFrame {
 	
+	/**
+	 * generate by eclipse ... needed for JFrame ...
+	 */
+	private static final long serialVersionUID = -3275653491163613005L;
 	private Simulator sim;
 	private SimulatorThread simulatorThread;
 	

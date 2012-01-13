@@ -2,7 +2,6 @@ package v1;
 
 import java.awt.Color;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Random;
 
 /**
@@ -152,6 +151,7 @@ public class Simulator {
 	/**
 	 * @return the number of monster (all: Zombies, MadZombies, Vampire and other) characters currently in the game
 	 */
+	@SuppressWarnings("unused")
 	public int nbMonsterAlive() {
 		// Need to iterate through the list of characters
 		// and count the number of bad
@@ -270,14 +270,6 @@ public class Simulator {
 		}
 	}
 
-	private void clearItems() {
-		for (int row = 0; row < field.getDepth(); row++) {
-			for (int col = 0; col < field.getWidth(); col++) {
-				Location location = new Location(row, col);
-				if (field.getObjectAt(location) instanceof Item)
-					field.clear(location);
-			}
-		}
-	}
+	
 
 }
