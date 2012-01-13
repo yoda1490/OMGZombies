@@ -18,13 +18,15 @@ public abstract class  Item {
         setLocation(location);
     }
     
-    
-    public void checkPersistance(){
+    //renvoi si soit true si doit rester, false si doit etre supprimŽ
+    public Boolean checkPersistance(){
     	if(age > persistance){
     		field.clear(location);
+    		return false;
     		
     	}else{
     	age++;
+    	return true;
     	}
     }
     

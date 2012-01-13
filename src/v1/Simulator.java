@@ -34,13 +34,16 @@ public class Simulator {
 	private double MADZOMBIE_CREATION_PROBABILITY = 0.0001;
 
 	// for items
-	private static final double FOOD_CREATION_PROBABILITY = 0.004;
-	private static final double SHOTGUN_CREATION_PROBABILITY = 0.00002;
-	private static final double NITROGEN_CREATION_PROBABILITY = 0.00001;
-	private static final double WOODENSTAKE_CREATION_PROBABILITY = 0.00001;
+	private static final double FOOD_CREATION_PROBABILITY = 0.0004;
+	private static final double SHOTGUN_CREATION_PROBABILITY = 0.0002;
+	private static final double NITROGEN_CREATION_PROBABILITY = 0.0001;
+	private static final double WOODENSTAKE_CREATION_PROBABILITY = 0.0001;
 
 	// private ArrayList<Character> characters;
 	public static ArrayList<Character> characters;
+	
+	// private ArrayList<Item> items;
+		public static ArrayList<Item> items;
 
 	// The current state of the field.
 	private Field field;
@@ -80,6 +83,8 @@ public class Simulator {
 		view.setColor(WoodenStake.class, new Color(102, 51, 0));
 
 		characters = new ArrayList<Character>();
+		
+		items = new ArrayList<Item>();
 		// Setup a valid starting point.
 		reset();
 
@@ -105,6 +110,14 @@ public class Simulator {
 		}
 
 		distribution();
+		
+		for (int i = 0; i < items.size(); i++) {
+			Item item = items.get(i);
+			
+			if (!item.checkPersistance()) {
+				items.remove(i);
+			}
+		}
 		
 
 		view.showStatus(step, field);
@@ -239,15 +252,19 @@ public class Simulator {
 					System.out.println("giving food");
 					Location location = new Location(row, col);
 					Food food = new Food(location, field);
+					items.add(food);
 				} else if (rand.nextDouble() <= SHOTGUN_CREATION_PROBABILITY) {
 					Location location = new Location(row, col);
 					ShotGun shotgun = new ShotGun(location, field);
+					items.add(shotgun);
 				} else if (rand.nextDouble() <= NITROGEN_CREATION_PROBABILITY) {
 					Location location = new Location(row, col);
 					Nitrogen nitrogen = new Nitrogen(location, field);
+					items.add(nitrogen);
 				} else if (rand.nextDouble() <= WOODENSTAKE_CREATION_PROBABILITY) {
 					Location location = new Location(row, col);
 					WoodenStake woodenstake = new WoodenStake(location, field);
+					items.add(woodenstake);
 				}
 			}
 		}
