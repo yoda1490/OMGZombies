@@ -42,12 +42,11 @@ public class CounterTest {
     @Test
     public void testGetName() {
         System.out.println("getName");
-        Counter instance = null;
-        String expResult = "";
+        Counter instance = new Counter("counter");
+        String expResult = "counter";
         String result = instance.getName();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        fail("Error un getName of Counter class.");
     }
 
     /**
@@ -56,12 +55,11 @@ public class CounterTest {
     @Test
     public void testGetCount() {
         System.out.println("getCount");
-        Counter instance = null;
+        Counter instance = new Counter("counter");
         int expResult = 0;
         int result = instance.getCount();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        fail("Error in getCount of Counter.");
     }
 
     /**
