@@ -28,7 +28,7 @@ public class Simulator {
 	private static final int DEFAULT_DEPTH = 60;
 	// The probability that a character will be created in any given grid
 	// position.
-	private double HUMAN_CREATION_PROBABILITY = 0.05;
+	private double HUMAN_CREATION_PROBABILITY = 0.02;
 	private double VAMPIRE_CREATION_PROBABILITY = 0.0005;
 	private double ZOMBIE_CREATION_PROBABILITY = 0.003;
 	private double MADZOMBIE_CREATION_PROBABILITY = 0.0001;
@@ -134,6 +134,21 @@ public class Simulator {
 			}
 		}
 		return nbHumans;
+	}
+	
+	/**
+	 * @return the number of monster (all: Zombies, MadZombies, Vampire and other) characters currently in the game
+	 */
+	public int nbMonsterAlive() {
+		// Need to iterate through the list of characters
+		// and count the number of bad
+		int nbCharac = 0;
+		int nbHumans = nbHumansAlive();
+		//we count all caracters
+		for (Character character : characters) {	
+				nbCharac++;
+		}
+		return nbCharac - nbHumans;
 	}
 
 	

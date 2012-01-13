@@ -17,7 +17,7 @@ public class SimulatorThread extends Thread {
     	System.out.println("Game starts with " + sim.nbHumansAlive()
                 + " humans!");
         // Iterate until no alive human remains
-        while (sim.nbHumansAlive() > 0 && sim.stopSimulation == false) {
+        while ((sim.nbHumansAlive() > 0 && sim.nbMonsterAlive() >0)&& sim.stopSimulation == false) {
             sim.nextTurn();
            try {
                 Thread.sleep(sim.speed);
@@ -26,7 +26,13 @@ public class SimulatorThread extends Thread {
                 e.printStackTrace();
             }
         }
-        System.out.println("All humans have been eaten!");
+        System.out.println("Game finished");
+        if(sim.nbHumansAlive() > 0){
+        	System.out.println("Humans wins!");
+        }else{
+        	System.out.println("All humans have been eaten!");
+     
+        }
             
     }       
 }
