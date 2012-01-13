@@ -1,1 +1,33 @@
-this is the readme ... we just have to complete it
+Pour compiler le jeu OMGZombiesvous devez exécuter les commandes suivantes dans votre terminal préféré:
+
+
+#Pour décompresser l'archive
+#Se placer dans le dossier contenant le fichier .jar
+cd /monDosier/BollerBourdin/
+#Extraire les fichiers contenue dans l'archive avec votre logiciel préféré ou via la console
+
+jar xf FinalBollerBourdinOMGZombies.jar
+
+#Pour compiler le projet
+#Créer les dossier ou seront compilés les fichier
+mkdir -p build/classes
+
+#Se placer dans le dossier src
+cd src
+
+#Compiler les fichier .java
+javac -d ../build/classes `find . -name "*.java"`
+
+
+#pour exécuter le logiciel
+#retourner a la racine du projet
+cd ../
+java -cp build/classes v1.Main
+
+
+Tout le projet est disponible sur git, pour le récupérer implement il suffit de faire:
+
+git clone https://github.com/yoda1490/OMGZombies
+
+
+en cas de problème vous pouvez exécuter OMGexecutable.jar disponible sur github, en effectuant simplement java -jar OMGexecutable.jar
