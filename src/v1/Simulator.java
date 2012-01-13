@@ -23,9 +23,9 @@ public class Simulator {
 
 	// Constants representing configuration information for the simulation.
 	// The default width for the grid.
-	private static final int DEFAULT_WIDTH = 120;
+	private static final int DEFAULT_WIDTH = 150;
 	// The default depth of the grid.
-	private static final int DEFAULT_DEPTH = 60;
+	private static final int DEFAULT_DEPTH = 80;
 	// The probability that a character will be created in any given grid
 	// position.
 	private double HUMAN_CREATION_PROBABILITY = 0.02;

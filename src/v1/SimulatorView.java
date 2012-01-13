@@ -22,7 +22,7 @@ public class SimulatorView extends JFrame {
     // Color used for objects that have no defined color.
     private static final Color UNKNOWN_COLOR = Color.gray;
 
-    private final String STEP_PREFIX = "Step: ";
+    private final String STEP_PREFIX = "To exit: close settings window    Step: ";
     private final String POPULATION_PREFIX = "Population: ";
     private JLabel stepLabel, population;
     private FieldView fieldView;
@@ -48,7 +48,7 @@ public class SimulatorView extends JFrame {
         stepLabel = new JLabel(STEP_PREFIX, JLabel.CENTER);
         population = new JLabel(POPULATION_PREFIX, JLabel.CENTER);
 
-        setLocation(25, 25);
+        setLocation(275, 25);
 
         fieldView = new FieldView(height, width);
 
