@@ -16,12 +16,14 @@ import static org.junit.Assert.*;
  * @author amauryboller
  */
 public class ZombieTest {
+    Zombie zombie;
     
     public ZombieTest() {
     }
 
     @BeforeClass
     public static void setUpClass() throws Exception {
+        
     }
 
     @AfterClass
@@ -30,6 +32,9 @@ public class ZombieTest {
     
     @Before
     public void setUp() {
+        Field field = new Field(20, 20);
+        Location location = new Location(10, 10);
+        zombie = new Zombie("zombie", 100, field, location);
     }
     
     @After
@@ -42,12 +47,11 @@ public class ZombieTest {
     @Test
     public void testIsStun() {
         System.out.println("isStun");
-        Zombie instance = null;
+        
         boolean expResult = false;
-        boolean result = instance.isStun();
+        boolean result = zombie.isStun();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
     /**
@@ -57,10 +61,8 @@ public class ZombieTest {
     public void testSetStun() {
         System.out.println("setStun");
         boolean isStun = false;
-        Zombie instance = null;
-        instance.setStun(isStun);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        zombie.setStun(isStun);
+        
     }
 
     /**
@@ -69,12 +71,10 @@ public class ZombieTest {
     @Test
     public void testGetStunTurn() {
         System.out.println("getStunTurn");
-        Zombie instance = null;
         int expResult = 0;
-        int result = instance.getStunTurn();
+        int result = zombie.getStunTurn();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
     /**
@@ -84,10 +84,8 @@ public class ZombieTest {
     public void testSetStunTurn() {
         System.out.println("setStunTurn");
         int stunTurn = 0;
-        Zombie instance = null;
-        instance.setStunTurn(stunTurn);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        zombie.setStunTurn(stunTurn);
+        
     }
 
     /**
@@ -97,10 +95,8 @@ public class ZombieTest {
     public void testSay() {
         System.out.println("say");
         String str = "";
-        Zombie instance = null;
-        instance.say(str);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        zombie.say(str);
+        
     }
 
     /**
@@ -109,10 +105,8 @@ public class ZombieTest {
     @Test
     public void testDecrementeStun() {
         System.out.println("decrementeStun");
-        Zombie instance = null;
-        instance.decrementeStun();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        zombie.decrementeStun();
+        
     }
 
     /**
@@ -121,10 +115,8 @@ public class ZombieTest {
     @Test
     public void testEndOfTurn() {
         System.out.println("endOfTurn");
-        Zombie instance = null;
-        instance.endOfTurn();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        zombie.endOfTurn();
+        
     }
 
     /**
@@ -133,11 +125,9 @@ public class ZombieTest {
     @Test
     public void testEncounterCharacter() {
         System.out.println("encounterCharacter");
-        Character c = null;
-        Zombie instance = null;
-        instance.encounterCharacter(c);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Character c = new Human("human", 50, zombie.getField(), zombie.getLocation());
+        zombie.encounterCharacter(c);
+        
     }
 
     /**
@@ -146,9 +136,7 @@ public class ZombieTest {
     @Test
     public void testRun() {
         System.out.println("run");
-        Zombie instance = null;
-        instance.run();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        zombie.run();
+        
     }
 }

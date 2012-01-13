@@ -17,6 +17,8 @@ import static org.junit.Assert.*;
  */
 public class VampireTest {
     
+    Vampire vampire;
+    
     public VampireTest() {
     }
 
@@ -30,6 +32,9 @@ public class VampireTest {
     
     @Before
     public void setUp() {
+        Field field = new Field(20, 20);
+        Location location = new Location(10, 10);
+        vampire = new Vampire("vampire", 100, field, location);
     }
     
     @After
@@ -42,12 +47,10 @@ public class VampireTest {
     @Test
     public void testGetIsThirsty() {
         System.out.println("getIsThirsty");
-        Vampire instance = null;
         boolean expResult = false;
-        boolean result = instance.getIsThirsty();
+        boolean result = vampire.getIsThirsty();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
     /**
@@ -57,10 +60,8 @@ public class VampireTest {
     public void testSetIsThirsty() {
         System.out.println("setIsThirsty");
         boolean isThirsty = false;
-        Vampire instance = null;
-        instance.setIsThirsty(isThirsty);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        vampire.setIsThirsty(isThirsty);
+        
     }
 
     /**
@@ -69,10 +70,8 @@ public class VampireTest {
     @Test
     public void testEndOfTurn() {
         System.out.println("endOfTurn");
-        Vampire instance = null;
-        instance.endOfTurn();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        vampire.endOfTurn();
+        
     }
 
     /**
@@ -82,10 +81,8 @@ public class VampireTest {
     public void testBite() {
         System.out.println("bite");
         Human h = null;
-        Vampire instance = null;
-        instance.bite(h);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        vampire.bite(h);
+        
     }
 
     /**
@@ -95,10 +92,8 @@ public class VampireTest {
     public void testEncounterCharacter() {
         System.out.println("encounterCharacter");
         Character c = null;
-        Vampire instance = null;
-        instance.encounterCharacter(c);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        vampire.encounterCharacter(c);
+        
     }
 
     /**
@@ -107,9 +102,7 @@ public class VampireTest {
     @Test
     public void testRun() {
         System.out.println("run");
-        Vampire instance = null;
-        instance.run();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        vampire.run();
+        
     }
 }

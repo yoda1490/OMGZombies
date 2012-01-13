@@ -17,7 +17,10 @@ import static org.junit.Assert.*;
  */
 public class SimulatorTest {
     
+    Simulator sim;
+    
     public SimulatorTest() {
+        
     }
 
     @BeforeClass
@@ -30,6 +33,7 @@ public class SimulatorTest {
     
     @Before
     public void setUp() {
+        sim = new Simulator();
     }
     
     @After
@@ -42,10 +46,8 @@ public class SimulatorTest {
     @Test
     public void testInit_0args() {
         System.out.println("init");
-        Simulator instance = new Simulator();
-        instance.init();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        sim.init();
+        
     }
 
     /**
@@ -56,10 +58,8 @@ public class SimulatorTest {
         System.out.println("init");
         int depth = 0;
         int width = 0;
-        Simulator instance = new Simulator();
-        instance.init(depth, width);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        sim.init(depth, width);
+        
     }
 
     /**
@@ -68,10 +68,8 @@ public class SimulatorTest {
     @Test
     public void testNextTurn() {
         System.out.println("nextTurn");
-        Simulator instance = new Simulator();
-        instance.nextTurn();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        sim.nextTurn();
+        
     }
 
     /**
@@ -80,10 +78,8 @@ public class SimulatorTest {
     @Test
     public void testReset() {
         System.out.println("reset");
-        Simulator instance = new Simulator();
-        instance.reset();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        sim.reset();
+        
     }
 
     /**
@@ -92,12 +88,10 @@ public class SimulatorTest {
     @Test
     public void testNbHumansAlive() {
         System.out.println("nbHumansAlive");
-        Simulator instance = new Simulator();
         int expResult = 0;
-        int result = instance.nbHumansAlive();
+        int result = sim.nbHumansAlive();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
     /**
@@ -106,12 +100,10 @@ public class SimulatorTest {
     @Test
     public void testNbMonsterAlive() {
         System.out.println("nbMonsterAlive");
-        Simulator instance = new Simulator();
         int expResult = 0;
-        int result = instance.nbMonsterAlive();
+        int result = sim.nbMonsterAlive();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
     /**
@@ -120,12 +112,11 @@ public class SimulatorTest {
     @Test
     public void testGetHUMAN_CREATION_PROBABILITY() {
         System.out.println("getHUMAN_CREATION_PROBABILITY");
-        Simulator instance = new Simulator();
-        double expResult = 0.0;
-        double result = instance.getHUMAN_CREATION_PROBABILITY();
-        assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        double proba = 0.0;
+        sim.setHUMAN_CREATION_PROBABILITY(proba);
+        double result = sim.getHUMAN_CREATION_PROBABILITY();
+        assertEquals(proba, result, 0.00);
+        
     }
 
     /**
@@ -134,11 +125,10 @@ public class SimulatorTest {
     @Test
     public void testSetHUMAN_CREATION_PROBABILITY() {
         System.out.println("setHUMAN_CREATION_PROBABILITY");
-        double hUMAN_CREATION_PROBABILITY = 0.0;
-        Simulator instance = new Simulator();
-        instance.setHUMAN_CREATION_PROBABILITY(hUMAN_CREATION_PROBABILITY);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        double proba = 0.0;
+        sim.setHUMAN_CREATION_PROBABILITY(proba);
+        double result = sim.getHUMAN_CREATION_PROBABILITY();
+        assertEquals(proba, result, 0.00);
     }
 
     /**
@@ -147,12 +137,10 @@ public class SimulatorTest {
     @Test
     public void testGetVAMPIRE_CREATION_PROBABILITY() {
         System.out.println("getVAMPIRE_CREATION_PROBABILITY");
-        Simulator instance = new Simulator();
-        double expResult = 0.0;
-        double result = instance.getVAMPIRE_CREATION_PROBABILITY();
-        assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        double proba = 0.0;
+        sim.setVAMPIRE_CREATION_PROBABILITY(proba);
+        double result = sim.getVAMPIRE_CREATION_PROBABILITY();
+        assertEquals(proba, result, 0.00);
     }
 
     /**
@@ -161,11 +149,10 @@ public class SimulatorTest {
     @Test
     public void testSetVAMPIRE_CREATION_PROBABILITY() {
         System.out.println("setVAMPIRE_CREATION_PROBABILITY");
-        double vAMPIRE_CREATION_PROBABILITY = 0.0;
-        Simulator instance = new Simulator();
-        instance.setVAMPIRE_CREATION_PROBABILITY(vAMPIRE_CREATION_PROBABILITY);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        double proba = 0.0;
+        sim.setVAMPIRE_CREATION_PROBABILITY(proba);
+        double result = sim.getVAMPIRE_CREATION_PROBABILITY();
+        assertEquals(proba, result, 0.00);
     }
 
     /**
@@ -174,12 +161,10 @@ public class SimulatorTest {
     @Test
     public void testGetZOMBIE_CREATION_PROBABILITY() {
         System.out.println("getZOMBIE_CREATION_PROBABILITY");
-        Simulator instance = new Simulator();
-        double expResult = 0.0;
-        double result = instance.getZOMBIE_CREATION_PROBABILITY();
-        assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        double proba = 0.0;
+        sim.setZOMBIE_CREATION_PROBABILITY(proba);
+        double result = sim.getZOMBIE_CREATION_PROBABILITY();
+        assertEquals(proba, result, 0.00);
     }
 
     /**
@@ -188,11 +173,10 @@ public class SimulatorTest {
     @Test
     public void testSetZOMBIE_CREATION_PROBABILITY() {
         System.out.println("setZOMBIE_CREATION_PROBABILITY");
-        double zOMBIE_CREATION_PROBABILITY = 0.0;
-        Simulator instance = new Simulator();
-        instance.setZOMBIE_CREATION_PROBABILITY(zOMBIE_CREATION_PROBABILITY);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        double proba = 0.0;
+        sim.setZOMBIE_CREATION_PROBABILITY(proba);
+        double result = sim.getZOMBIE_CREATION_PROBABILITY();
+        assertEquals(proba, result, 0.00);
     }
 
     /**
@@ -201,12 +185,10 @@ public class SimulatorTest {
     @Test
     public void testGetMADZOMBIE_CREATION_PROBABILITY() {
         System.out.println("getMADZOMBIE_CREATION_PROBABILITY");
-        Simulator instance = new Simulator();
-        double expResult = 0.0;
-        double result = instance.getMADZOMBIE_CREATION_PROBABILITY();
-        assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        double proba = 0.0;
+        sim.setMADZOMBIE_CREATION_PROBABILITY(proba);
+        double result = sim.getMADZOMBIE_CREATION_PROBABILITY();
+        assertEquals(proba, result, 0.00);
     }
 
     /**
@@ -215,11 +197,10 @@ public class SimulatorTest {
     @Test
     public void testSetMADZOMBIE_CREATION_PROBABILITY() {
         System.out.println("setMADZOMBIE_CREATION_PROBABILITY");
-        double mADZOMBIE_CREATION_PROBABILITY = 0.0;
-        Simulator instance = new Simulator();
-        instance.setMADZOMBIE_CREATION_PROBABILITY(mADZOMBIE_CREATION_PROBABILITY);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        double proba = 0.0;
+        sim.setMADZOMBIE_CREATION_PROBABILITY(proba);
+        double result = sim.getMADZOMBIE_CREATION_PROBABILITY();
+        assertEquals(proba, result, 0.00);
     }
 
     /**
@@ -227,11 +208,6 @@ public class SimulatorTest {
      */
     @Test
     public void testGenerateRandomBoolean() {
-        System.out.println("GenerateRandomBoolean");
-        boolean expResult = false;
-        boolean result = Simulator.GenerateRandomBoolean();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //how to test a random methode ?
     }
 }

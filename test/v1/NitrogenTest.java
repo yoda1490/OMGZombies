@@ -17,6 +17,8 @@ import static org.junit.Assert.*;
  */
 public class NitrogenTest {
     
+    Nitrogen ng;
+    
     public NitrogenTest() {
     }
 
@@ -30,6 +32,9 @@ public class NitrogenTest {
     
     @Before
     public void setUp() {
+        Field field = new Field(20, 20);
+        Location location = new Location(10, 10);
+        ng = new Nitrogen(location, field);
     }
     
     @After
@@ -42,12 +47,10 @@ public class NitrogenTest {
     @Test
     public void testIsCanUse() {
         System.out.println("isCanUse");
-        Nitrogen instance = null;
-        boolean expResult = false;
-        boolean result = instance.isCanUse();
+        boolean expResult = true;
+        boolean result = ng.isCanUse();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
     /**
@@ -57,10 +60,8 @@ public class NitrogenTest {
     public void testSetCanUse() {
         System.out.println("setCanUse");
         boolean canUse = false;
-        Nitrogen instance = null;
-        instance.setCanUse(canUse);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        ng.setCanUse(canUse);
+        
     }
 
     /**
@@ -69,9 +70,7 @@ public class NitrogenTest {
     @Test
     public void testUse() {
         System.out.println("use");
-        Nitrogen instance = null;
-        instance.use();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        ng.use();
+        
     }
 }

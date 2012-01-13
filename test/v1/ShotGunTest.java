@@ -17,6 +17,8 @@ import static org.junit.Assert.*;
  */
 public class ShotGunTest {
     
+    ShotGun sg;
+    
     public ShotGunTest() {
     }
 
@@ -30,6 +32,9 @@ public class ShotGunTest {
     
     @Before
     public void setUp() {
+        Field field = new Field(20, 20);
+        Location location = new Location(10, 10);
+        sg = new ShotGun(location, field);
     }
     
     @After
@@ -42,12 +47,10 @@ public class ShotGunTest {
     @Test
     public void testIsCanUse() {
         System.out.println("isCanUse");
-        ShotGun instance = null;
-        boolean expResult = false;
-        boolean result = instance.isCanUse();
+        boolean expResult = true;
+        boolean result = sg.isCanUse();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
     /**
@@ -57,10 +60,8 @@ public class ShotGunTest {
     public void testSetCanUse() {
         System.out.println("setCanUse");
         boolean canUse = false;
-        ShotGun instance = null;
-        instance.setCanUse(canUse);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        sg.setCanUse(canUse);
+        
     }
 
     /**
@@ -69,9 +70,7 @@ public class ShotGunTest {
     @Test
     public void testUse() {
         System.out.println("use");
-        ShotGun instance = null;
-        instance.use();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        sg.use();
+        
     }
 }

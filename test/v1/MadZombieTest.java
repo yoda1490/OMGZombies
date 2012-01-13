@@ -17,6 +17,8 @@ import static org.junit.Assert.*;
  */
 public class MadZombieTest {
     
+    MadZombie madZombie;
+    
     public MadZombieTest() {
     }
 
@@ -30,6 +32,9 @@ public class MadZombieTest {
     
     @Before
     public void setUp() {
+        Field field = new Field(20, 20);
+        Location location = new Location(10, 10);
+        madZombie = new MadZombie("mad Zombie", 100, field, location);
     }
     
     @After
@@ -42,11 +47,9 @@ public class MadZombieTest {
     @Test
     public void testEncounterCharacter() {
         System.out.println("encounterCharacter");
-        Character c = null;
-        MadZombie instance = null;
-        instance.encounterCharacter(c);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Human human = new Human("human", 100, madZombie.getField(), madZombie.getLocation());
+        madZombie.encounterCharacter(human);
+        
     }
 
     /**
@@ -55,9 +58,7 @@ public class MadZombieTest {
     @Test
     public void testRun() {
         System.out.println("run");
-        MadZombie instance = null;
-        instance.run();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        madZombie.run();
+        
     }
 }

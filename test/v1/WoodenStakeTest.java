@@ -17,6 +17,8 @@ import static org.junit.Assert.*;
  */
 public class WoodenStakeTest {
     
+    WoodenStake wd;
+    
     public WoodenStakeTest() {
     }
 
@@ -30,6 +32,9 @@ public class WoodenStakeTest {
     
     @Before
     public void setUp() {
+        Field field = new Field(20, 20);
+        Location location = new Location(10, 10);
+        wd = new WoodenStake(location, field);
     }
     
     @After
@@ -42,12 +47,10 @@ public class WoodenStakeTest {
     @Test
     public void testIsCanUse() {
         System.out.println("isCanUse");
-        WoodenStake instance = null;
-        boolean expResult = false;
-        boolean result = instance.isCanUse();
+        boolean expResult = true;
+        boolean result = wd.isCanUse();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
     /**
@@ -56,11 +59,9 @@ public class WoodenStakeTest {
     @Test
     public void testSetCanUse() {
         System.out.println("setCanUse");
-        boolean canUse = false;
-        WoodenStake instance = null;
-        instance.setCanUse(canUse);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Boolean canUse = false;
+        wd.setCanUse(canUse);
+        
     }
 
     /**
@@ -69,9 +70,7 @@ public class WoodenStakeTest {
     @Test
     public void testUse() {
         System.out.println("use");
-        WoodenStake instance = null;
-        instance.use();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        wd.use();
+        
     }
 }

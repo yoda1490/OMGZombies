@@ -17,6 +17,8 @@ import static org.junit.Assert.*;
  */
 public class HumanTest {
     
+    Human human;
+    
     public HumanTest() {
     }
 
@@ -30,6 +32,9 @@ public class HumanTest {
     
     @Before
     public void setUp() {
+        Field field = new Field(20, 20);
+        Location location = new Location(10, 10);
+        human = new Human("human", 100, field, location);
     }
     
     @After
@@ -42,12 +47,10 @@ public class HumanTest {
     @Test
     public void testGetHasBeenBitten() {
         System.out.println("getHasBeenBitten");
-        Human instance = null;
         boolean expResult = false;
-        boolean result = instance.getHasBeenBitten();
+        boolean result = human.getHasBeenBitten();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
     /**
@@ -57,10 +60,8 @@ public class HumanTest {
     public void testSetHasBeenBitten() {
         System.out.println("setHasBeenBitten");
         boolean hasBeenBitten = false;
-        Human instance = null;
-        instance.setHasBeenBitten(hasBeenBitten);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        human.setHasBeenBitten(hasBeenBitten);
+        
     }
 
     /**
@@ -69,12 +70,10 @@ public class HumanTest {
     @Test
     public void testGetTurnsSinceLastMeal() {
         System.out.println("getTurnsSinceLastMeal");
-        Human instance = null;
         int expResult = 0;
-        int result = instance.getTurnsSinceLastMeal();
+        int result = human.getTurnsSinceLastMeal();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
     /**
@@ -84,10 +83,8 @@ public class HumanTest {
     public void testSetTurnsSinceLastMeal() {
         System.out.println("setTurnsSinceLastMeal");
         int turnsSinceLastMeal = 0;
-        Human instance = null;
-        instance.setTurnsSinceLastMeal(turnsSinceLastMeal);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        human.setTurnsSinceLastMeal(turnsSinceLastMeal);
+        
     }
 
     /**
@@ -96,12 +93,10 @@ public class HumanTest {
     @Test
     public void testIsHasShotGun() {
         System.out.println("isHasShotGun");
-        Human instance = null;
         boolean expResult = false;
-        boolean result = instance.isHasShotGun();
+        boolean result = human.isHasShotGun();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
     /**
@@ -111,10 +106,8 @@ public class HumanTest {
     public void testSetHasShotGun() {
         System.out.println("setHasShotGun");
         boolean hasShotGun = false;
-        Human instance = null;
-        instance.setHasShotGun(hasShotGun);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        human.setHasShotGun(hasShotGun);
+        
     }
 
     /**
@@ -123,12 +116,10 @@ public class HumanTest {
     @Test
     public void testIsHasNitrogen() {
         System.out.println("isHasNitrogen");
-        Human instance = null;
         boolean expResult = false;
-        boolean result = instance.isHasNitrogen();
+        boolean result = human.isHasNitrogen();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
     /**
@@ -138,10 +129,8 @@ public class HumanTest {
     public void testSetHasNitrogen() {
         System.out.println("setHasNitrogen");
         boolean hasNitrogen = false;
-        Human instance = null;
-        instance.setHasNitrogen(hasNitrogen);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        human.setHasNitrogen(hasNitrogen);
+        
     }
 
     /**
@@ -150,12 +139,10 @@ public class HumanTest {
     @Test
     public void testIsHasWoodenStake() {
         System.out.println("isHasWoodenStake");
-        Human instance = null;
         boolean expResult = false;
-        boolean result = instance.isHasWoodenStake();
+        boolean result = human.isHasWoodenStake();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
     /**
@@ -165,10 +152,8 @@ public class HumanTest {
     public void testSetHasWoodenStake() {
         System.out.println("setHasWoodenStake");
         boolean hasWoodenStake = false;
-        Human instance = null;
-        instance.setHasWoodenStake(hasWoodenStake);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        human.setHasWoodenStake(hasWoodenStake);
+        
     }
 
     /**
@@ -177,12 +162,11 @@ public class HumanTest {
     @Test
     public void testGetShotgun() {
         System.out.println("getShotgun");
-        Human instance = null;
-        ShotGun expResult = null;
-        ShotGun result = instance.getShotgun();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        ShotGun shotgun = new ShotGun(human.getLocation(), human.getField());
+        human.setShotgun(shotgun);
+        ShotGun result = human.getShotgun();
+        assertEquals(shotgun, result);
+        
     }
 
     /**
@@ -191,11 +175,10 @@ public class HumanTest {
     @Test
     public void testSetShotgun() {
         System.out.println("setShotgun");
-        ShotGun shotgun = null;
-        Human instance = null;
-        instance.setShotgun(shotgun);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        ShotGun shotgun = new ShotGun(human.getLocation(), human.getField());
+        human.setShotgun(shotgun);
+        ShotGun result = human.getShotgun();
+        assertEquals(shotgun, result);
     }
 
     /**
@@ -204,12 +187,10 @@ public class HumanTest {
     @Test
     public void testGetNitrogen() {
         System.out.println("getNitrogen");
-        Human instance = null;
-        Nitrogen expResult = null;
-        Nitrogen result = instance.getNitrogen();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Nitrogen nitrogen = new Nitrogen(human.getLocation(), human.getField());
+        human.setNitrogen(nitrogen);
+        Nitrogen result = human.getNitrogen();
+        assertEquals(nitrogen, result);
     }
 
     /**
@@ -218,11 +199,10 @@ public class HumanTest {
     @Test
     public void testSetNitrogen() {
         System.out.println("setNitrogen");
-        Nitrogen nitrogen = null;
-        Human instance = null;
-        instance.setNitrogen(nitrogen);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Nitrogen nitrogen = new Nitrogen(human.getLocation(), human.getField());
+        human.setNitrogen(nitrogen);
+        Nitrogen result = human.getNitrogen();
+        assertEquals(nitrogen, result);
     }
 
     /**
@@ -231,12 +211,10 @@ public class HumanTest {
     @Test
     public void testGetWoodenstake() {
         System.out.println("getWoodenstake");
-        Human instance = null;
-        WoodenStake expResult = null;
-        WoodenStake result = instance.getWoodenstake();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        WoodenStake woodenStake = new WoodenStake(human.getLocation(), human.getField());
+        human.setWoodenstake(woodenStake);
+        WoodenStake result = human.getWoodenstake();
+        assertEquals(woodenStake, result);
     }
 
     /**
@@ -245,11 +223,10 @@ public class HumanTest {
     @Test
     public void testSetWoodenstake() {
         System.out.println("setWoodenstake");
-        WoodenStake woodenstake = null;
-        Human instance = null;
-        instance.setWoodenstake(woodenstake);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        WoodenStake woodenStake = new WoodenStake(human.getLocation(), human.getField());
+        human.setWoodenstake(woodenStake);
+        WoodenStake result = human.getWoodenstake();
+        assertEquals(woodenStake, result);
     }
 
     /**
@@ -258,10 +235,8 @@ public class HumanTest {
     @Test
     public void testEndOfTurn() {
         System.out.println("endOfTurn");
-        Human instance = null;
-        instance.endOfTurn();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        human.endOfTurn();
+        
     }
 
     /**
@@ -270,12 +245,9 @@ public class HumanTest {
     @Test
     public void testTurnIntoVampire() {
         System.out.println("turnIntoVampire");
-        Human instance = null;
-        Vampire expResult = null;
-        Vampire result = instance.turnIntoVampire();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //Vampire vampire = human.turnIntoVampire();
+        
+        
     }
 
     /**
@@ -284,12 +256,8 @@ public class HumanTest {
     @Test
     public void testTurnIntoZombie() {
         System.out.println("turnIntoZombie");
-        Human instance = null;
-        Zombie expResult = null;
-        Zombie result = instance.turnIntoZombie();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //Zombie zombie = human.turnIntoZombie();
+        
     }
 
     /**
@@ -298,11 +266,9 @@ public class HumanTest {
     @Test
     public void testEncounterCharacter() {
         System.out.println("encounterCharacter");
-        Character c = null;
-        Human instance = null;
-        instance.encounterCharacter(c);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Human human2 = new Human("human 2", 100, human.getField(), human.getLocation());
+        human.encounterCharacter(human2);
+        
     }
 
     /**
@@ -311,9 +277,7 @@ public class HumanTest {
     @Test
     public void testRun() {
         System.out.println("run");
-        Human instance = null;
-        instance.run();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        human.run();
+        
     }
 }
